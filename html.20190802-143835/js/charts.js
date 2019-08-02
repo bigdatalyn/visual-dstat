@@ -147,5 +147,5 @@ function csv_chart(data, id, title, labels, ylabel) {
 load_csv();
 if (refresh_page) {
   $("#id_refresh").text("Page will refresh every second. ")
-  var refresh=setInterval(function () {load_csv()}, 3000);  //Refresh page every 3 sec
+  var refresh=setInterval(function () {load_csv()}, 5000);  //Refresh page every 5 sec
 }

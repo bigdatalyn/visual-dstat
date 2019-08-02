@@ -26,9 +26,9 @@ trap 'kill_server' SIGTERM SIGINT # Kill when webserver is killed
 if [ $# -lt 1 ]
 then
   # Launch dstat measurement
-  echo Starting dstat for 5 minutes using this command:
-  echo "dstat --time -v --net --output dstat.csv 1 300"
-  dstat --time -v --net --output $HTML_DIR/dstat.csv 1 300 > /dev/null &
+  echo Starting dstat for 15 minutes using this command:
+  echo "dstat --time -v --net --output dstat.csv 1 900"
+  dstat --time -v --net --output $HTML_DIR/dstat.csv 1 900 > /dev/null &
   DSTAT_PID=$!
   ARG="and dstat measurement"
   cat index.html | sed "s/refresh_page = false/refresh_page = true/" | \
@@ -42,10 +42,10 @@ fi
   
 cd $HTML_DIR
 
-echo Starting web server--point your browser to http://localhost:2222
+echo Starting web server--point your browser to http://localhost:2221
 echo 
-python -m SimpleHTTPServer 2222 2> http_log&
+python -m SimpleHTTPServer 2221 2> http_log&
 SRV_PID=$!
-sleep 0.5
+sleep 1
 read -p "Press return to stop web server $ARG"
 kill_server

@@ -2,6 +2,7 @@ var time0 = -1,
     header_lines; // Used in error message in parse_line()
 
 var parse_line = function() {
+  //parse_line(x, i, 1e-6, "recv", "send");
   var line = arguments[0],
   i = arguments[1],
   factor = arguments[2],
@@ -12,12 +13,14 @@ var parse_line = function() {
   time_ms;
   
   try {
+    //02-08 12:42:37
     day = line.time.split('-')[0];
-    month = line.time.split('-')[1].split(' ')[0];
+    //month = line.time.split('-')[1].split(' ')[0];
+    month = line.time.split('-')[1].split(' ')[0]-1;
     time = line.time.split(' ')[1].split(':');
     arr = [];
-    //time_str = "2015-" + month + '-' + day + ' ' + time
-    time_ms = new Date ("2015", month, day , time[0], time[1], time[2]);
+    //time_str = "2019-" + month + '-' + day + ' ' + time
+    time_ms = new Date ("2019", month, day , time[0], time[1], time[2]);
     //console.log(time_str);
     //time_ms = Date.parse(time_str);
     //console.log(time_ms);
@@ -25,8 +28,8 @@ var parse_line = function() {
       time0 = time_ms;
     }
     console.log((time_ms - time0) / 1000);
-    arr.push((time_ms - time0) / 1000);
-
+    //arr.push((time_ms - time0) / 1000);
+    arr.push(time_ms);
     for (var i = 3; i < arguments.length; i++) {
       arr.push(factor * line[arguments[i]]);
     }
@@ -128,7 +131,7 @@ function csv_chart(data, id, title, labels, ylabel) {
       labels: labels,
       //http://colorbrewer2.org/  <- qualitative, 6 classes
       colors: ['rgb(228,26,28)','rgb(55,126,184)','rgb(77,175,74)','rgb(152,78,163)','rgb(255,127,0)','rgb(141,211,199)'],
-      xlabel: "Elapsed time [ sec ]",
+      xlabel: "Date Time [ yyyy/mm/dd timestamp ]",
       ylabel: ylabel,
       strokeWidth: 2,
       legend: 'always',
