@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <link href="style.css" rel="stylesheet">
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/jquery.csv-0.71.js" type="text/javascript"></script>
+  <script type="text/javascript"  src="js/dygraph-combined.js"></script>
+  <title id="id_title">Visual DSTAT html</title>
+</head>
+<body>
+  <a href="https://github.com/bigdatalyn/visual_dstat" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+  <h2>Visualize dstat</h2>
+  <p><small><span id="id_header"></span><br>
+  <span id="id_refresh"></span>View CSV file <a href="dstat.csv">here</a>.</small></p>
+  <p id="id_error"></p>
+  <div class="section">
+    <div class="one" id="id_cpu"></div>
+    <div class="two" id="id_io"></div>
+  </div>
+  <p><br></p>
+  <div class="section">
+    <div class="one" id="id_mem"></div>
+    <div class="two" id="id_net"></div>
+  </div>
+  <div class="section">
+    <div class="one" id="id_sys"></div>
+    <div class="two" id="id_proc"></div>
+  </div>
+  <div class="section">
+    <div class="one" id="id_pag"></div>
+  </div>
+  <script type='text/javascript'>
+  var csv_fn="dstat.csv",
+  refresh_page = false;
+  </script>
+  <script src='js/charts.js' type='text/javascript'> </script>
+
+</body>
+</html>
