@@ -17,8 +17,8 @@ var parse_line = function() {
     month = line.time.split('-')[1].split(' ')[0]-1;
     time = line.time.split(' ')[1].split(':');
     arr = [];
-    //time_str = "2015-" + month + '-' + day + ' ' + time
-    time_ms = new Date ("2015", month, day , time[0], time[1], time[2]);
+    //time_str = "2018-" + month + '-' + day + ' ' + time
+    time_ms = new Date ("2018", month, day , time[0], time[1], time[2]);
     //console.log(time_str);
     //time_ms = Date.parse(time_str);
     //console.log(time_ms);
@@ -113,7 +113,7 @@ function load_csv() {
       csv_chart(net_data, "id_net", "Network", ["time", "recv", "send"], "Usage [ MB/s ]")
       csv_chart(sys_data, "id_sys", "System", ["time", "interrupts", "context switches"], "")
       csv_chart(proc_data, "id_proc", "Processes", ["time", "run", "blk", "new"], "")
-      //csv_chart(pag_data, "id_pag", "Paging", ["time", "in", "out"], "")
+      csv_chart(pag_data, "id_pag", "Paging", ["time", "in", "out"], "")
     },
     error: function(request, status, error) {
       console.log(status);
@@ -131,7 +131,8 @@ function csv_chart(data, id, title, labels, ylabel) {
     {
       labels: labels,
       //http://colorbrewer2.org/  <- qualitative, 6 classes
-      colors: ['rgb(228,26,28)','rgb(55,126,184)','rgb(77,175,74)','rgb(152,78,163)','rgb(255,127,0)','rgb(141,211,199)'],
+      //colors: ['rgb(228,26,28)','rgb(55,126,184)','rgb(77,175,74)','rgb(152,78,163)','rgb(255,127,0)','rgb(141,211,199)'],
+	  colors: ['rgb(227,26,28)','rgb(31,120,180)','rgb(166,206,227)','rgb(178,223,138)','rgb(251,154,153)','rgb(51,160,44)'],
       //xlabel: "Elapsed time [ sec ]",
       xlabel: "Date Time [ Timestamp ]",
       ylabel: ylabel,
@@ -147,5 +148,5 @@ function csv_chart(data, id, title, labels, ylabel) {
 load_csv();
 if (refresh_page) {
   $("#id_refresh").text("Page will refresh every second. ")
-  var refresh=setInterval(function () {load_csv()}, 5000);  //Refresh page every 5 sec
+  var refresh=setInterval(function () {load_csv()}, 3000);  //Refresh page every 3 sec
 }

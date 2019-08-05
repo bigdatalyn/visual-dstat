@@ -1,11 +1,12 @@
 #!/bin/bash
-# Launch webserver and visualize dstat measurement in a browser
-# Create dstat file using this format
+# Launch webserver and visualize dstat graph in a browser
+#  Create dstat file using following command
 #  $ dstat --time -v --net --output [DSTAT_output_CSV] [DELAY_SEC]
 #  Example:
 #  $ dstat --time -v --net --output dstat.csv 1 10
 #  $ ./visual_dstat.sh dstat.csv
-# If called with no arguments, will launch dstat measurement
+#
+# If called with no arguments, will launch dstat in background
 #  $ ./visual_dstat.sh
 
 CSV_FN=$1
